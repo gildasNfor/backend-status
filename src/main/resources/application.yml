@@ -1,0 +1,44 @@
+#server.address=192.168.43.223
+#spring.data.cassandra.keyspace-name=status_db
+#spring.data.cassandra.port=9042
+#spring.data.cassandra.contact-points=127.0.0.1:9042
+#spring.data.cassandra.local-datacenter=datacenter1
+#spring.data.cassandra.schema-action=CREATE_IF_NOT_EXISTS
+#
+#spring.main.banner-mode=off
+#
+#logging.level.com.example.restservice=DEBUG
+#
+## For setting max upload and download file size
+#servlet.multipart.enabled= true
+#spring.servlet.multipart.max-file-size=100MB
+#spring.servlet.multipart.max-request-size=100MB
+
+#server:
+#  address: 192.168.0.101
+#  address: 192.168.0.103
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: status_db
+      port: 9042
+      contact-points: 127.0.0.1:9042
+      local-datacenter: datacenter1
+#      schema-action: RECREATE
+      schema-action: CREATE_IF_NOT_EXISTS
+      client:
+#        connect-timeout: 20m
+#        read-timeout: 20m
+
+  servlet:
+    multipart:
+      enabled: true
+# Threshold after which files are written to disk.
+#      file-size-threshold: 2KB
+# Max file size.
+      max-file-size: 10MB
+# Max Request Size
+      max-request-size: 10MB
+
+
