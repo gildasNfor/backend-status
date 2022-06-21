@@ -67,15 +67,15 @@ public class StatusController {
                     .path("status/view_video/")
                     .path(Integer.toString(status.getUserNumber()))
                     .toUriString() + "?postTime=" + status.getPostTime().toString();
-            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), null, downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration());
+            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), null, downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration());
         } else if (statusImage != null) {
              downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("status/view_image/")
                     .path(Integer.toString(status.getUserNumber()))
                     .toUriString() + "?postTime=" + status.getPostTime().toString();
-            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration());
+            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration());
         } else {
-            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), null, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration());
+            statusResponse = new StatusResponse(userNumber, status.getPostTime().toString(), null, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration());
         }
         return new ResponseEntity<>(statusResponse, HttpStatus.CREATED);
     }
@@ -126,17 +126,17 @@ public class StatusController {
                         .path("status/view_image/")
                         .path(Integer.toString(status.getUserNumber()))
                         .toUriString() + "?postTime=" + status.getPostTime().toString();
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }else if(status.getStatusVideo() != null){
                 String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                         .path("status/view_video/")
                         .path(Integer.toString(status.getUserNumber()))
                         .toUriString() + "?postTime=" + status.getPostTime().toString();
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }else{
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }
         });
@@ -153,17 +153,17 @@ public class StatusController {
                         .path("status/view_image/")
                         .path(Integer.toString(status.getUserNumber()))
                         .toUriString() + "?postTime=" + status.getPostTime().toString();
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(), downloadURl, null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }else if(status.getStatusVideo() != null){
                 String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                         .path("status/view_video/")
                         .path(Integer.toString(status.getUserNumber()))
                         .toUriString()  + "?postTime=" + status.getPostTime().toString();
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , downloadURl, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }else{
-                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime().toString(), status.getDuration()));
+                statusResponses.add(new StatusResponse(status.getUserNumber(), status.getPostTime().toString(),null , null, status.isPublicStatus(), status.getStatusText(),status.getStatusCaption(), status.getDisappearTime(), status.getDuration()));
 
             }
         });

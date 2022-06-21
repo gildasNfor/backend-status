@@ -19,7 +19,7 @@ public class StatusPreview {
     @Id
     @PrimaryKeyColumn(name = "user_number", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private int userNumber;
-
+    private String userName;
     private int numberOfStatus;
 
     @CassandraType(type = CassandraType.Name.BLOB)

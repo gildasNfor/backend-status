@@ -3,7 +3,9 @@ package com.example.restservice.status;
 import com.example.restservice.exceptions.BadRequestException;
 import com.example.restservice.exceptions.NotFoundException;
 import com.example.restservice.statusPreview.StatusPreviewRepository;
+import com.example.restservice.users.User;
 import com.example.restservice.users.UserRepository;
+import com.example.restservice.users.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,8 @@ public class StatusService implements StatusInterface{
     private UserRepository userRepository;
     @Autowired
     private StatusPreviewRepository statusPreviewRepository;
+    @Autowired
+    private UserService userService;
 
     @Override
     public Status addAStatus(int userNumber, String statusCaption, String statusText, MultipartFile statusImage, MultipartFile statusVideo, boolean isPublicStatus, String disappearTime, String duration) throws IOException {
@@ -93,8 +97,13 @@ public class StatusService implements StatusInterface{
                     numberOfStatus++;
 
         }
+        Optional<User> user = Optional.ofNullable(userService.getOneUser(userNumber));
+        String userName = "";
+        if(user.isPresent()){
+             userName = user.get().getUserName();
+        }
         Status returnedStatus = statusRepository.save(status);
-        statusPreviewRepository.save(new StatusPreview(userNumber, numberOfStatus, null, thePostTime));
+        statusPreviewRepository.save(new StatusPreview(userNumber, userName,  numberOfStatus, null, thePostTime));
         return returnedStatus;
     }
 

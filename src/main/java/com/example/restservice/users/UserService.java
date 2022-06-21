@@ -39,7 +39,7 @@ public class UserService implements UserInterface {
             throw new BadRequestException("Enter a valid phone number");
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         String fileExtension = StringUtils.getFilenameExtension(fileName);
-        if(!(fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg"))) throw new BadRequestException("You need to provide an image for the users photo");
+        if(!(fileExtension.equalsIgnoreCase("png") || fileExtension.equalsIgnoreCase("jpg") || fileExtension.equalsIgnoreCase("jpeg"))) throw new BadRequestException("You need to provide an image for the users photo");
 
         if (fileName.contains("..")) {
             throw new BadRequestException("Filename contains invalid path sequence "

@@ -27,7 +27,7 @@ public class StatusPreviewController {
                     .path(Integer.toString(statusPreview.getUserNumber()))
                     .toUriString();
 
-            StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), downloadURl, statusPreview.getLastStatusTime().toString());
+            StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), statusPreview.getUserName(), downloadURl, statusPreview.getLastStatusTime().toString());
             statusPreviewResponses.add(statusPreviewResponse);
         });
 
@@ -35,17 +35,19 @@ public class StatusPreviewController {
     }
 
     @GetMapping("/{userNumber}")
-    public ResponseEntity<StatusPreviewResponse> getOneUser(@PathVariable int userNumber) {
+    public ResponseEntity<List<StatusPreviewResponse>> getOneUser(@PathVariable int userNumber) {
         log.info("IN GET ONE USER CONTROLLER NUMBER IS: " + userNumber);
+        List<StatusPreviewResponse> statusPreviewResponses = new ArrayList<>();
         StatusPreview statusPreview = statusPreviewService.getOneStatusPreview(userNumber);
         String downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/user/view/")
                 .path(Integer.toString(statusPreview.getUserNumber()))
                 .toUriString();
 
-        StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), downloadURl, statusPreview.getLastStatusTime().toString());
+        StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), statusPreview.getUserName(), downloadURl, statusPreview.getLastStatusTime().toString());
+        statusPreviewResponses.add(statusPreviewResponse);
 
-        return new ResponseEntity<>(statusPreviewResponse, HttpStatus.OK);
+        return new ResponseEntity<>(statusPreviewResponses, HttpStatus.OK);
     }
 
     @GetMapping("/permitted_status_preview/{userNumber}")
@@ -58,7 +60,7 @@ public class StatusPreviewController {
                     .path(Integer.toString(statusPreview.getUserNumber()))
                     .toUriString();
 
-            StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), downloadURl, statusPreview.getLastStatusTime().toString());
+            StatusPreviewResponse statusPreviewResponse = new StatusPreviewResponse(statusPreview.getUserNumber(), statusPreview.getNumberOfStatus(), statusPreview.getUserName(), downloadURl, statusPreview.getLastStatusTime().toString());
             statusPreviewResponses.add(statusPreviewResponse);
         });
 

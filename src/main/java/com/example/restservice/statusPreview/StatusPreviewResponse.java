@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class StatusPreviewResponse {
     private int userNumber;
     private int numberOfStatus;
+    private String userName;
     private String lastImageThumb;
     private String lastStatusTime;
 }
